@@ -4,4 +4,4 @@ Managing Tours
 
 #### License
 
-mit
+mit# ofqtours
