@@ -1,0 +1,293 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "Trip - {trip_country}- .###",
+ "creation": "2025-08-07 13:52:19.156953",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "personal_infromation_section_section",
+  "first_name",
+  "last_name",
+  "gender",
+  "mobile_number",
+  "nationality",
+  "column_break_brve",
+  "email_address",
+  "emergency_phone_number",
+  "passport_number",
+  "group_category",
+  "ppl_count",
+  "section_break_avdn",
+  "trip_start_date",
+  "trip_last_date",
+  "duration_days",
+  "trip_country",
+  "column_break_euau",
+  "accommodation",
+  "accommodation_reserved",
+  "accommodation_category",
+  "section_break_coun",
+  "paid_amount",
+  "payment_status",
+  "column_break_clqd",
+  "unpaid_amount",
+  "full_amount",
+  "section_break_crcf",
+  "exchange_rate",
+  "table_eyhs",
+  "trip_expenses",
+  "net_profit",
+  "amended_from",
+  "section_break_pite",
+  "group_infromation",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "First Name"
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Phone",
+   "label": "Mobile Number"
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address"
+  },
+  {
+   "fieldname": "emergency_phone_number",
+   "fieldtype": "Phone",
+   "label": "Emergency Phone Number"
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "label": "Passport Number"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Nationality"
+  },
+  {
+   "fieldname": "group_category",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Group Category",
+   "options": "Single\nCouples\nFamily\nFriends"
+  },
+  {
+   "fieldname": "ppl_count",
+   "fieldtype": "Int",
+   "label": "People Count"
+  },
+  {
+   "fieldname": "trip_last_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Trip Last Date"
+  },
+  {
+   "fieldname": "accommodation",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Accommodation",
+   "options": "Accommodation Providers"
+  },
+  {
+   "fieldname": "accommodation_reserved",
+   "fieldtype": "Data",
+   "label": "Accommodation Reserved"
+  },
+  {
+   "fieldname": "accommodation_category",
+   "fieldtype": "Data",
+   "label": "Accommodation Category"
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount"
+  },
+  {
+   "fieldname": "unpaid_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "UnPaid Amount"
+  },
+  {
+   "fieldname": "full_amount",
+   "fieldtype": "Currency",
+   "label": "Full Amount"
+  },
+  {
+   "fieldname": "payment_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Status",
+   "options": "Totally Paid\nPartially Paid\nNot Paid"
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Exchange Rate USD to TNGE"
+  },
+  {
+   "fieldname": "table_eyhs",
+   "fieldtype": "Table",
+   "label": "Trip Simple Expenses",
+   "options": "Trip Simple Expenses"
+  },
+  {
+   "fieldname": "trip_expenses",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Trip Expenses"
+  },
+  {
+   "fieldname": "net_profit",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Profit"
+  },
+  {
+   "fieldname": "group_infromation",
+   "fieldtype": "Table",
+   "label": "Group Information",
+   "options": "ofq group info"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "HTML Editor",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "personal_infromation_section_section",
+   "fieldtype": "Section Break",
+   "label": "Personal Infromation Section"
+  },
+  {
+   "fieldname": "column_break_brve",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_crcf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "trip_country",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Trip Country"
+  },
+  {
+   "fieldname": "duration_days",
+   "fieldtype": "Int",
+   "label": "Trip Duration Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trip_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Trip Start Date"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "OFQ Tours Trip",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "section_break_avdn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_euau",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_coun",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_clqd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_pite",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-09-03 17:08:28.743564",
+ "modified_by": "Administrator",
+ "module": "OFQ Tours",
+ "name": "OFQ Tours Trip",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

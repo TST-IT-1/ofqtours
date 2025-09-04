@@ -5,6 +5,7 @@ app_description = "Managing Tours"
 app_email = "kwahba@tst-group.org"
 app_license = "mit"
 
+fixtures = ["Client Script"]
 # Apps
 # ------------------
 

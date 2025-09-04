@@ -1,0 +1,35 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "OFQ Tours Trip",
+  "enabled": 1,
+  "modified": "2025-08-07 16:03:04.438400",
+  "module": "OFQ Tours",
+  "name": "Paid and Unpaid Calculation",
+  "script": "frappe.ui.form.on('OFQ Tours Trip', {\r\n    full_amount: update_payment_fields,\r\n    paid_amount: update_payment_fields\r\n});\r\n\r\nfunction update_payment_fields(frm) {\r\n    let full = frm.doc.full_amount || 0;\r\n    let paid = frm.doc.paid_amount || 0;\r\n    let unpaid = full - paid;\r\n\r\n    frm.set_value('unpaid_amount', unpaid);\r\n\r\n    let status = 'Not Paid';\r\n    if (paid >= full && full > 0) {\r\n        status = 'Totally Paid';\r\n    } else if (paid > 0 && paid < full) {\r\n        status = 'Partially Paid';\r\n    }\r\n\r\n    frm.set_value('payment_status', status);\r\n}\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "OFQ Tours Trip",
+  "enabled": 1,
+  "modified": "2025-08-07 11:37:03.733835",
+  "module": "OFQ Tours",
+  "name": "Trip Expenses Total from Child Table",
+  "script": "frappe.ui.form.on('Trip Simple Expenses', {\n    amount: function(frm) { calculate_expenses(frm); },\n    table_eyhs_remove: function(frm) { calculate_expenses(frm); }\n});\nfunction calculate_expenses(frm) {\n    let total = 0;\n    frm.doc.table_eyhs.forEach(row => total += row.amount || 0);\n    frm.set_value('trip_expenses', total);\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "OFQ Tours Trip",
+  "enabled": 1,
+  "modified": "2025-08-07 11:37:03.733840",
+  "module": "OFQ Tours",
+  "name": "Profit Calculation",
+  "script": "frappe.ui.form.on('OFQ Tours Trip', {\n    full_amount: calculate_profit,\n    trip_expenses: calculate_profit\n});\nfunction calculate_profit(frm) {\n    frm.set_value('net_profit', (frm.doc.full_amount || 0) - (frm.doc.trip_expenses || 0));\n}",
+  "view": "Form"
+ }
+]
