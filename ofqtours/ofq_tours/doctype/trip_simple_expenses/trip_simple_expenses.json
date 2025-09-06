@@ -6,20 +6,50 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "section_break_2zzn"
+  "category",
+  "comment_or_details",
+  "date",
+  "end_date",
+  "amount",
+  "amount_on_tnge"
  ],
  "fields": [
-  { "fieldname": "category", "fieldtype": "Select", "label": "Category", "options": "Accommodation\nTickets\nTranslation\nTransportation\nCar Expenses\nOther Expenses" },
-  { "fieldname": "comment_or_details", "fieldtype": "Data", "label": "Comment or Details" },
-  { "fieldname": "date", "fieldtype": "Date", "label": "Start Date" },
-  { "fieldname": "end_date", "fieldtype": "Date", "label": "End Date" },
-  { "fieldname": "amount", "fieldtype": "Currency", "label": "Amount USD" },
-  { "fieldname": "amount_on_tnge", "fieldtype": "Currency", "label": "Amount TNGE" }
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Accommodation\nTickets\nTranslation\nTransportation\nCar Expenses\nOther Expenses"
+  },
+  {
+   "fieldname": "comment_or_details",
+   "fieldtype": "Data",
+   "label": "Comment or Details"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Int",
+   "label": "Amount USD"
+  },
+  {
+   "fieldname": "amount_on_tnge",
+   "fieldtype": "Int",
+   "label": "Amount TNGE"
+  }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-08-07 14:28:37.980348",
+ "modified": "2025-09-04 17:47:37.244219",
  "modified_by": "Administrator",
  "module": "OFQ Tours",
  "name": "Trip Simple Expenses",

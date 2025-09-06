@@ -31,5 +31,16 @@
   "name": "Profit Calculation",
   "script": "frappe.ui.form.on('OFQ Tours Trip', {\n    full_amount: calculate_profit,\n    trip_expenses: calculate_profit\n});\nfunction calculate_profit(frm) {\n    frm.set_value('net_profit', (frm.doc.full_amount || 0) - (frm.doc.trip_expenses || 0));\n}",
   "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "OFQ Tours Trip",
+  "enabled": 1,
+  "modified": "2025-09-04 17:45:55.716569",
+  "module": "OFQ Tours",
+  "name": "exchange rate",
+  "script": "frappe.ui.form.on('OFQ Tours Trip', {\r\n    onload: function(frm) {\r\n        attach_live_grid_listeners(frm);\r\n    },\r\n    refresh: function(frm) {\r\n        attach_live_grid_listeners(frm);\r\n    }\r\n});\r\n\r\n// ------- helpers -------\r\nfunction attach_live_grid_listeners(frm) {\r\n    if (frm.__tnge_live_attached) return;\r\n\r\n    const grid = frm.fields_dict && frm.fields_dict.table_eyhs && frm.fields_dict.table_eyhs.grid;\r\n    if (!grid || !grid.wrapper) return;\r\n\r\n    const cdt = grid.doctype;\r\n\r\n    // Round to 2 decimals\r\n    const round2 = (n) => Math.round((parseFloat(n || 0) + Number.EPSILON) * 100) / 100;\r\n\r\n    function getRowCDNFromInput(inputEl) {\r\n        const $row = $(inputEl).closest('.grid-row');\r\n        return $row.attr('data-name'); // cdn\r\n    }\r\n\r\n    // Prevent circular updates\r\n    let updating = false;\r\n\r\n    // USD → TNGE\r\n    grid.wrapper.on('input', '[data-fieldname=\"amount\"] input', function () {\r\n        if (updating) return;\r\n\r\n        const rate = flt(frm.doc.exchange_rate);\r\n        if (!rate) return;\r\n\r\n        const cdn = getRowCDNFromInput(this);\r\n        if (!cdn) return;\r\n\r\n        const usdVal = flt($(this).val());\r\n        updating = true;\r\n        frappe.model.set_value(cdt, cdn, 'amount_on_tnge', round2(usdVal * rate));\r\n        updating = false;\r\n    });\r\n\r\n    // TNGE → USD\r\n    grid.wrapper.on('input', '[data-fieldname=\"amount_on_tnge\"] input', function () {\r\n        if (updating) return;\r\n\r\n        const rate = flt(frm.doc.exchange_rate);\r\n        if (!rate) return;\r\n\r\n        const cdn = getRowCDNFromInput(this);\r\n        if (!cdn) return;\r\n\r\n        const tngeVal = flt($(this).val());\r\n        updating = true;\r\n        frappe.model.set_value(cdt, cdn, 'amount', round2(tngeVal / rate));\r\n        updating = false;\r\n    });\r\n\r\n    frm.__tnge_live_attached = true;\r\n}\r\n\r\n// --- Optional fallback on blur for older versions ---\r\nfrappe.ui.form.on('Trip Simple Expenses', {\r\n    amount: function(frm, cdt, cdn) {\r\n        const rate = flt(frm.doc.exchange_rate);\r\n        if (!rate) return;\r\n        const row = locals[cdt][cdn];\r\n        frappe.model.set_value(cdt, cdn, 'amount_on_tnge', Math.round((row.amount * rate + Number.EPSILON) * 100) / 100);\r\n    },\r\n    amount_on_tnge: function(frm, cdt, cdn) {\r\n        const rate = flt(frm.doc.exchange_rate);\r\n        if (!rate) return;\r\n        const row = locals[cdt][cdn];\r\n        frappe.model.set_value(cdt, cdn, 'amount', Math.round((row.amount_on_tnge / rate + Number.EPSILON) * 100) / 100);\r\n    }\r\n});\r\n",
+  "view": "Form"
  }
 ]
